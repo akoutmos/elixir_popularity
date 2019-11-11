@@ -8,7 +8,11 @@ defmodule ElixirPopularity.Application do
   def start(_type, _args) do
     children = [
       :hackney_pool.child_spec(:hn_id_pool, timeout: 15000, max_connections: 100),
-      ElixirPopularity.Repo
+      ElixirPopularity.Repo,
+      %{
+        id: ElixirPopularity.RMQPublisher,
+        start: {ElixirPopularity.RMQPublisher, :start_link, []}
+      }
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
