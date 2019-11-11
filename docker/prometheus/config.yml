@@ -1,0 +1,25 @@
+# Global Configurations
+global:
+  scrape_interval:     5s
+  evaluation_interval: 5s
+
+  external_labels:
+      monitor: 'elixir_sample_app'
+
+# Targets to scrape
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'elixir_app'
+    static_configs:
+      - targets: ['elixir_app:4000']
+
+  - job_name: 'postgres_exporter'
+    static_configs:
+      - targets: ['postgres_exporter:9187']
+
+  - job_name: 'rabbitmq'
+    static_configs:
+      - targets: ['rabbitmq:15692']
