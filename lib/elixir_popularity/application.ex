@@ -28,7 +28,8 @@ defmodule ElixirPopularity.Application do
            ]},
         restart: :transient
       },
-      ElixirPopularity.HackernewsIdProcessor
+      ElixirPopularity.HackernewsIdProcessor,
+      ElixirPopularity.HackernewsPayloadProcessor
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
